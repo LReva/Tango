@@ -4,7 +4,9 @@ import math
 def factorial_of_number(number):
   return math.factorial(number)
 
-print(factorial_of_number(3))
+print(factorial_of_number(8))
+print(factorial_of_number(18))
+print(factorial_of_number(45))
 
 
 # Solution Two
@@ -16,7 +18,9 @@ def another_factorial(num):
   elif num >1:
     return num * another_factorial(num-1)
 
-print(another_factorial(0))
+print(another_factorial(8))
+print(another_factorial(18))
+print(another_factorial(45))
 
 #Solution Three
 def third_factorial(num):
@@ -27,4 +31,6 @@ def third_factorial(num):
     result *= i
   return result
 
-print(third_factorial(-3))
+print(third_factorial(8))
+print(third_factorial(18))
+print(third_factorial(45))
