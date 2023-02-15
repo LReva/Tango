@@ -1,5 +1,3 @@
-# Rewrite this in Unit Test
-
 from caesar_cipher import caesar_cipher
 
 print(caesar_cipher("Boy! What a string!", -5) == "Wjt! Rcvo v nomdib!")
