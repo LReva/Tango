@@ -1,5 +1,3 @@
-// Can you translate this driver code to unit tests?
-
 var cc = require("./creditCheck");
 
 console.log(cc.creditCheck('5541808923795240') === "The number is valid!");
