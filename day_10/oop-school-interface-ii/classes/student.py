@@ -6,7 +6,7 @@ class Student(Person):
 
     def __init__(self, name, age, password, role, school_id):
         super().__init__(name, age, password, role)
-        self.school_id = school_id
+        self.school_id = int(school_id)
 
     @classmethod
     def objects(cls):

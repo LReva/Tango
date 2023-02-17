@@ -8,12 +8,14 @@ class School:
         self.students = Student.objects()
 
     def list_students(self):
-        return "\n".join([' '.join([str(i+1) + ".", student.name, student.school_id]) for i, student in enumerate(self.students)])
+        return "\n".join([' '.join([str(i+1) + ".", student.name, str(student.school_id)]) for i, student in enumerate(self.students)])
     
     def find_student_by_id(self, id):
         for student in self.students:
             if student.school_id == id:
                 return student
+        print("Student was not found")
+        return 
             
     def add_student(self, student_data):
         new_student = Student(**student_data)
