@@ -1,15 +1,18 @@
-import React from 'react'
-import './App.css'
-import VideoComponent from "./components/VideoComponent.jsx" 
-import inventory from "./data/inventory.json"
+import './App.css';
+import Inventory from './components/Inventory';
+import inventory from './data/inventory.json'
+
 
 function App() {
 
   return (
-    <div>
-      <h1>Welcome to our video store</h1>
-      <VideoComponent inventory={inventory}/>
-    </div>
+    <>
+      <h1>Welcome to our video Store</h1>
+      <h2>Current inventory</h2>
+      <div className="video-row">
+        <Inventory inventory = {inventory}/>
+      </div>
+    </>
   )
 }
 

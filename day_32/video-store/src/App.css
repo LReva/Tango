@@ -55,3 +55,16 @@ button:hover {
 button:disabled{
   background:grey;
 }
+
+.movie-desription{
+  display:flex;
+  flex-direction:column;
+  
+}
+
+.rent-return{
+  display: flex;
+  flex-direction: row; 
+  align-self: center;
+  gap:2%;
+}
