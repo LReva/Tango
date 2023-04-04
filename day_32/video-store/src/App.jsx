@@ -1,5 +1,5 @@
 import './App.css';
-import Inventory from './components/Inventory';
+import { Outlet } from 'react-router-dom';
 
 export default  function App() {
 
@@ -8,7 +8,7 @@ export default  function App() {
       <h1>Welcome to our video Store</h1>
       <h2>Current inventory</h2>
       <div className="video-row">
-        <Inventory/>
+        <Outlet/>
       </div>
     </>
   )

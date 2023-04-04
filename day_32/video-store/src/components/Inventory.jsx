@@ -1,11 +1,10 @@
 import InventoryItem from "../components/InventoryItem";
-import Details from "../components/Details"
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+
 export default function Inventory(){
 
-  const [filmDetails, setfilmDetails] = useState(false);
   const[inventoryData, setInventoryData] = useState([])
 
   const topTen = ['The Shawshank Redemption', 
@@ -27,16 +26,11 @@ export default function Inventory(){
       let filmData = {
         "id":response.data.imdbID,
         "title": response.data.Title,
-        "imdbRating": response.data.imdbRating,
-        "rated":response.data.Rated,
-        "year": response.data.Year,
         "image":response.data.Poster,
-        "cast":response.data.Actors,
-        "description":response.data.Plot,
-        "copiesAvailable": {
-          "current": 6,
-          "total": 6
-        }
+        // "copiesAvailable": {
+        //   "current": 6,
+        //   "total": 6
+        // }
       }
       newInventory.push(filmData)
     }
@@ -46,27 +40,6 @@ export default function Inventory(){
   useEffect(()=> {
     fetchData()
   },[])
-
-  const onClickShowDetails = (id) => {
-    if(id) {
-      setfilmDetails(inventoryData.find(film => film.id === id))
-    }
-    else {
-      setfilmDetails(false)
-    }
-  }
-
-  const onClickReturnOrRent = (id, type) => {
-    let newInventory = [...inventoryData]
-    let selectedItem = newInventory.find(film => film.id === id)
-    if (type==="Return") {
-      selectedItem.copiesAvailable.current++
-    }
-    else if(type==="RentOut"){
-      selectedItem.copiesAvailable.current--
-    }
-    setInventoryData(newInventory)
-  }
   
   return(
     <>      
@@ -75,12 +48,7 @@ export default function Inventory(){
 
       {inventoryData.map((item) => <InventoryItem 
                                     item = {item} 
-                                    key={item.id} 
-                                    filmDetails = {filmDetails} 
-                                    onClickShowDetails = {onClickShowDetails}/>)}
-
-    <button onClick={()=>onClickShowDetails(null)}>Clear out</button>
-    {filmDetails && <Details item={filmDetails} onClickReturnOrRent = {onClickReturnOrRent} />}   
+                                    key={item.id}/>)} 
      </div>) : (
       <div>Loading...</div>
     )}
