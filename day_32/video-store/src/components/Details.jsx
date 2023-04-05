@@ -2,6 +2,7 @@ import { useParams, useLoaderData, useNavigate} from 'react-router-dom';
 import inventoryData from './Inventory';
 import axios from "axios";
 import { useState } from "react";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 export async function filmLoad({params}) {
   let response = await axios.get(`http://www.omdbapi.com/?apiKey=${import.meta.env.VITE_omdbApiKey}&i=${params.id}`)
@@ -21,10 +22,10 @@ export default function Details(){
     "image":filmDataResponse.Poster,
     "cast":filmDataResponse.Actors,
     "description":filmDataResponse.Plot,
-    "copiesAvailable": {
-      "current": 6,
-      "total": 6
-    }
+    // "copiesAvailable": {
+    //   "current": 6,
+    //   "total": 6
+    // }
   }
   const [filmData, setFilmData] = useState(film)
 
@@ -43,7 +44,7 @@ export default function Details(){
     <div>
 
       <div className="movie-desription">
-        <button className='return' onClick={() => navigate(`/`)}>Return</button>
+        <button className='return' onClick={() => navigate(`/`)}> <ArrowBackIosNewIcon/></button>
         <h4>Title: {filmData.title}</h4>
         <div className="posterDiv">
         <img className="poster"src={filmData.image} alt="" />
@@ -52,7 +53,7 @@ export default function Details(){
         <h5>Rated: {filmData.rated}</h5>
         <h5>Cast: {filmData.cast}</h5>
         <p>{filmData.description}</p>
-        <p>Copies available {filmData.copiesAvailable.current}/{filmData.copiesAvailable.total}</p>
+        {/* <p>Copies available {filmData.copiesAvailable.current}/{filmData.copiesAvailable.total}</p> */}
         <div className="rent-return">
           {/* <button disabled = {filmData.copiesAvailable.current === 0}
                   onClick={()=>onClickReturnOrRent("RentOut")}>
